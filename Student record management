@@ -1,0 +1,192 @@
+#include <iostream>
+#include <string>
+
+const int MAX_STUDENTS = 100;
+
+struct Student {
+    std::string name;
+    int rollNumber;
+    int age;
+    std::string course;
+};
+
+struct StudentRecord {
+    Student students[MAX_STUDENTS];
+    int numStudents;
+};
+
+void addStudent(StudentRecord& record) {
+    if (record.numStudents >= MAX_STUDENTS) {
+        std::cout << "Record is full. Cannot add more students.\n";
+        return;
+    }
+
+    Student newStudent;
+    std::cout << "Enter student name: ";
+    std::cin.ignore(); // To consume the newline character from the previous input
+    std::getline(std::cin, newStudent.name);
+    std::cout << "Enter student roll number: ";
+    std::cin >> newStudent.rollNumber;
+    std::cout << "Enter student age: ";
+    std::cin >> newStudent.age;
+#include <iostream>
+#include <string>
+
+const int MAX_STUDENTS = 100;
+
+struct Student {
+    std::string name;
+    int rollNumber;
+    int age;
+    std::string course;
+};
+
+struct StudentRecord {
+    Student students[MAX_STUDENTS];
+    int numStudents;
+};
+
+void addStudent(StudentRecord& record) {
+    if (record.numStudents >= MAX_STUDENTS) {
+        std::cout << "Record is full. Cannot add more students.\n";
+        return;
+    }
+
+    Student newStudent;
+    std::cout << "Enter student name: ";
+    std::cin.ignore(); // To consume the newline character from the previous input
+    std::getline(std::cin, newStudent.name);
+    std::cout << "Enter student roll number: ";
+    std::cin >> newStudent.rollNumber;
+    std::cout << "Enter student age: ";
+    std::cin >> newStudent.age;
+    std::cout << "Enter student course: ";
+    std::cin.ignore();
+    std::getline(std::cin, newStudent.course);
+
+    record.students[record.numStudents++] = newStudent;
+    std::cout << "Student added successfully!\n";
+}
+
+void viewStudents(const StudentRecord& record) {
+    if (record.numStudents == 0) {
+        std::cout << "No students in the record.\n";
+        return;
+    }
+
+    std::cout << "Student Records:\n";
+    for (int i = 0; i < record.numStudents; ++i) {
+        const Student& student = record.students[i];
+        std::cout << "Name: " << student.name << "\n";
+        std::cout << "Roll Number: " << student.rollNumber << "\n";
+        std::cout << "Age: " << student.age << "\n";
+        std::cout << "Course: " << student.course << "\n";
+        std::cout << "----------------------------\n";
+    }
+}
+
+void searchStudent(const StudentRecord& record, int rollNumber) {
+    for (int i = 0; i < record.numStudents; ++i) {
+        if (record.students[i].rollNumber == rollNumber) {
+            const Student& student = record.students[i];
+            std::cout << "Name: " << student.name << "\n";
+            std::cout << "Roll Number: " << student.rollNumber << "\n";
+            std::cout << "Age: " << student.age << "\n";
+            std::cout << "Course: " << student.course << "\n";
+            return;
+        }
+    }
+    std::cout << "Student with roll number " << rollNumber << " not found.\n";
+}
+
+int main() {
+    StudentRecord record;
+    record.numStudents = 0;
+
+    int choice;
+    do {
+        std::cout << "\nStudent Record Management System\n";
+        std::cout << "1. Add Student\n";
+        std::cout << "2. View Students\n";
+        std::cout << "3. Search Student\n";
+        std::cout << "4. Exit\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                addStudent(record);
+                break;
+            case 2:
+                viewStudents(record);
+                break;
+            case 3: {
+                int rollNumber;
+                std::cout << "Enter the roll number to search: ";
+                std::cin >> rollNumber;
+                searchStudent(record, rollNumber);
+                break;
+            }
+            case 4:
+                std::cout << "Exiting the program.\n";
+                break;
+            default:
+                std::cout << "Invalid choice. Try again.\n";
+                break;
+        }
+    } while (choice != 4);
+
+    return 0;
+}
+￼Enter    std::cout << "Enter student course: ";
+    std::cin.ignore();
+    std::getline(std::cin, newStudent.course);
+
+    record.students[record.numStudents++] = newStudent;
+    std::cout << "Student added successfully!\n";
+}
+
+void viewStudents(const StudentRecord& record) {
+    if (record.numStudents == 0) {
+        std::cout << "No students in the record.\n";
+        return;
+    }
+
+    std::cout << "Student Records:\n";
+    for (int i = 0; i < record.numStudents; ++i) {
+        const Student& student = record.students[i];
+        std::cout << "Name: " << student.name << "\n";
+        std::cout << "Roll Number: " << student.rollNumber << "\n";
+        std::cout << "Age: " << student.age << "\n";
+        std::cout << "Course: " << student.course << "\n";
+        std::cout << "----------------------------\n";
+    }
+}
+
+void searchStudent(const StudentRecord& record, int rollNumber) {
+r (int i = 0; i < record.numStudents; ++i) {
+        if (record.students[i].rollNumber == rollNumber) {
+            const Student& student = record.students[i];
+            std::cout << "Name: " << student.name << "\n";
+            std::cout << "Roll Number: " << student.rollNumber << "\n";
+            std::cout << "Age: " << student.age << "\n";
+            std::cout << "Course: " << student.course << "\n";
+            return;
+        }
+    }
+    std::cout << "Student with roll number " << rollNumber << " not found.\n";
+}
+
+int main() {
+    StudentRecord record;
+    record.numStudents = 0;
+
+    int choice;
+    do {
+        std::cout << "\nStudent Record Management System\n";
+        std::cout << "1. Add Student\n";
+        std::cout << "2. View Students\n";
+        std::cout << "3. Search Student\n";
+        std::cout << "4. Exit\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
